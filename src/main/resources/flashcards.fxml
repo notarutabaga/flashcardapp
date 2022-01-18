@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+   <children>
+      <Pane fx:id="answerPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <TextArea fx:id="cardAnswer" editable="false" focusTraversable="false" layoutX="100.0" layoutY="65.0" prefHeight="223.0" prefWidth="400.0" stylesheets="@stylesheet.css" text="answer" wrapText="true">
+               <font>
+                  <Font name="Constantia" size="36.0" />
+               </font>
+            </TextArea>
+            <JFXButton fx:id="greenButton" focusTraversable="false" layoutX="100.0" layoutY="308.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #ddedea;" text="I knew it">
+               <font>
+                  <Font name="Constantia" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="yellowButton" focusTraversable="false" layoutX="240.0" layoutY="308.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fcf4dd;" text="I almost knew it">
+               <font>
+                  <Font name="Constantia" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="redButton" focusTraversable="false" layoutX="380.0" layoutY="308.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fce1e4;" text="I didn't know it">
+               <font>
+                  <Font name="Constantia" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="questionPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
+         <children>
+            <TextArea fx:id="cardQuestion" editable="false" focusTraversable="false" layoutX="100.0" layoutY="65.0" prefHeight="223.0" prefWidth="400.0" stylesheets="@stylesheet.css" text="question" wrapText="true">
+               <font>
+                  <Font name="Constantia" size="36.0" />
+               </font>
+            </TextArea>
+            <JFXButton fx:id="blueButton" layoutX="228.0" layoutY="308.0" onAction="#seeAnswer" prefHeight="27.0" prefWidth="144.0" style="-fx-background-color: #daeaf6;" text="See answer">
+               <font>
+                  <Font name="Constantia" size="14.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="menuPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" visible="false">
+         <children>
+            <JFXButton fx:id="startButton" focusTraversable="false" layoutX="240.0" layoutY="231.0" onAction="#startGame" style="-fx-border-color: #ffafcc; -fx-border-width: 3; -fx-border-radius: 10;" text="START">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
