@@ -16,24 +16,24 @@
                   <Font name="Constantia" size="36.0" />
                </font>
             </TextArea>
-            <JFXButton fx:id="greenButton" focusTraversable="false" layoutX="100.0" layoutY="308.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #ddedea;" text="I knew it">
+            <JFXButton fx:id="greenButton" focusTraversable="false" layoutX="100.0" layoutY="308.0" onAction="#clickedGreen" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #ddedea;" text="I knew it">
                <font>
                   <Font name="Constantia" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="yellowButton" focusTraversable="false" layoutX="240.0" layoutY="308.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fcf4dd;" text="I almost knew it">
+            <JFXButton fx:id="yellowButton" focusTraversable="false" layoutX="240.0" layoutY="308.0" onAction="#clickedYellow" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fcf4dd;" text="I almost knew it">
                <font>
                   <Font name="Constantia" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="redButton" focusTraversable="false" layoutX="380.0" layoutY="308.0" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fce1e4;" text="I didn't know it">
+            <JFXButton fx:id="redButton" focusTraversable="false" layoutX="380.0" layoutY="308.0" onAction="#clickedRed" prefHeight="27.0" prefWidth="120.0" style="-fx-background-color: #fce1e4;" text="I didn't know it">
                <font>
                   <Font name="Constantia" size="14.0" />
                </font>
             </JFXButton>
          </children>
       </Pane>
-      <Pane fx:id="questionPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
+      <Pane fx:id="questionPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" visible="false">
          <children>
             <TextArea fx:id="cardQuestion" editable="false" focusTraversable="false" layoutX="100.0" layoutY="65.0" prefHeight="223.0" prefWidth="400.0" stylesheets="@stylesheet.css" text="question" wrapText="true">
                <font>
