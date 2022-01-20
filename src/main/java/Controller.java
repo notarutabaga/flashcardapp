@@ -1,10 +1,13 @@
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Controller {
     public Pane menuPane;
@@ -26,18 +29,36 @@ public class Controller {
     public ArrayList<Card> greenCards;
     public ArrayList<Integer> probability;
     public Card currentCard;
-    
+    public JFXButton newSetButton;
+    public Pane newSetPane;
+    public TextField fillName;
+    public JFXButton saveCardButton;
+    public JFXButton saveSetButton;
+    public TextArea fillQuestion;
+    public TextArea fillAnswer;
+
+    public JFXButton xaria;
+    public Text numCards;
+
+    public CardSet currentSet;
+
+    ArrayList<Card> newSet = new ArrayList<>();
+    CardSet newCardSet;
+    @FXML
+    int numCardsCount;
+
     public void initialize() {
         menuPane.setVisible(true);
         questionPane.setVisible(false);
         answerPane.setVisible(false);
+        newSetPane.setVisible(false);
     }
 
     public void startGame() {
         menuPane.setVisible(false);
         questionPane.setVisible(true);
-        redCards = Card.makeFlashcards();
-        probability = Card.getProbability();
+        redCards = currentSet.getSet();
+        probability = CardSet.getProbability();
         yellowCards = new ArrayList<>();
         greenCards = new ArrayList<>();
 
@@ -61,14 +82,14 @@ public class Controller {
             currentCard = greenCards.get((int) (Math.random() * greenCards.size()));
         }
 
-        cardQuestion.setText(currentCard.question);
+        cardQuestion.setText(currentCard.getQuestion());
     }
 
     public void seeAnswer() {
         questionPane.setVisible(false);
         answerPane.setVisible(true);
 
-        cardAnswer.setText(currentCard.answer);
+        cardAnswer.setText(currentCard.getAnswer());
     }
 
     public void clickedGreen() {
@@ -207,6 +228,38 @@ public class Controller {
             //endGame();
         } else {
             setQuestion();
+        }
+    }
+
+    public void makeNewSet() {
+        newSetPane.setVisible(true);
+        menuPane.setVisible(false);
+    }
+
+    public void saveCard() {
+        if(!fillQuestion.getText().isEmpty() && !fillAnswer.getText().isEmpty()) {
+            String question = fillQuestion.getText();
+            String answer = fillAnswer.getText();
+            newSet.add(new Card(question, answer));
+            fillQuestion.clear();
+            fillAnswer.clear();
+            numCardsCount++;
+            numCards.setText(String.valueOf(numCardsCount));
+        }
+    }
+
+    public void saveSet() {
+        if(!newSet.isEmpty() && !fillName.getText().isEmpty()) {
+            String setName = fillName.getText();
+            newCardSet = new CardSet(newSet, setName);
+            System.out.println(newCardSet.getSetName());
+            System.out.println(newCardSet.getSet());
+
+            File file = CardSet.createFileSet(newCardSet);
+            CardSet.writeFileSet(file, newCardSet);
+
+            newSetPane.setVisible(false);
+            menuPane.setVisible(true);
         }
     }
 }
