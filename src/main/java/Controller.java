@@ -1,5 +1,4 @@
 import com.jfoenix.controls.JFXButton;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -40,10 +39,11 @@ public class Controller {
     public JFXButton xaria;
     public Text numCards;
 
-    public CardSet currentSet;
+    public Deck currentSet;
+    public ArrayList<String> allDecks;
 
     ArrayList<Card> newSet = new ArrayList<>();
-    CardSet newCardSet;
+    Deck newCardSet;
     @FXML
     int numCardsCount;
 
@@ -52,13 +52,14 @@ public class Controller {
         questionPane.setVisible(false);
         answerPane.setVisible(false);
         newSetPane.setVisible(false);
+        allDecks = Deck.readInDecks();
     }
 
     public void startGame() {
         menuPane.setVisible(false);
         questionPane.setVisible(true);
-        redCards = currentSet.getSet();
-        probability = CardSet.getProbability();
+        redCards = currentSet.getDeck();
+        probability = Deck.getProbability();
         yellowCards = new ArrayList<>();
         greenCards = new ArrayList<>();
 
@@ -251,12 +252,13 @@ public class Controller {
     public void saveSet() {
         if(!newSet.isEmpty() && !fillName.getText().isEmpty()) {
             String setName = fillName.getText();
-            newCardSet = new CardSet(newSet, setName);
-            System.out.println(newCardSet.getSetName());
-            System.out.println(newCardSet.getSet());
+            newCardSet = new Deck(newSet, setName);
+            System.out.println(newCardSet.getName());
+            System.out.println(newCardSet.getDeck());
 
-            File file = CardSet.createFileSet(newCardSet);
-            CardSet.writeFileSet(file, newCardSet);
+            File file = Deck.createFileSet(newCardSet);
+            Deck.writeFileSet(file, newCardSet);
+            Deck.appendDeckName(allDecks, setName);
 
             newSetPane.setVisible(false);
             menuPane.setVisible(true);
