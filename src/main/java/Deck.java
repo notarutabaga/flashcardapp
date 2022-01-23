@@ -63,7 +63,7 @@ public class Deck {
         }
     }
 
-    public ArrayList<Card> readFileDeck(File file) {
+    public static ArrayList<Card> readFileDeck(File file) {
         ArrayList<Card> newDeck = new ArrayList<>();
         Scanner scanner = null;
         try {
@@ -90,15 +90,15 @@ public class Deck {
         Scanner scanner = null;
         try {
             scanner = new Scanner(new File("src\\main\\resources\\savedDecks\\deckNames.txt"));
+            int numDecks = Integer.parseInt(scanner.nextLine());
+            for(int i = 0; i < numDecks; i++) {
+                allDecks.add(scanner.nextLine());
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        int numDecks = scanner.nextInt();
-        for(int i = 0; i < numDecks; i++) {
-            allDecks.add(scanner.nextLine());
-        }
-
+        System.out.println(allDecks);
         return allDecks;
     }
 

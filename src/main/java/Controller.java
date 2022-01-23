@@ -36,7 +36,6 @@ public class Controller {
     public TextArea fillQuestion;
     public TextArea fillAnswer;
 
-    public JFXButton xaria;
     public Text numCards;
 
     public Deck currentSet;
@@ -53,11 +52,22 @@ public class Controller {
         answerPane.setVisible(false);
         newSetPane.setVisible(false);
         allDecks = Deck.readInDecks();
+        System.out.println(allDecks);
+    }
+
+    public Deck chooseDeck() {
+        String name = "firstSet";
+        ArrayList<Card> cards = Deck.readFileDeck(new File("src\\main\\resources\\savedDecks\\" + name + ".txt"));
+
+        Deck deck = new Deck(cards, name);
+
+        return deck;
     }
 
     public void startGame() {
         menuPane.setVisible(false);
         questionPane.setVisible(true);
+        currentSet = chooseDeck();
         redCards = currentSet.getDeck();
         probability = Deck.getProbability();
         yellowCards = new ArrayList<>();
@@ -138,7 +148,7 @@ public class Controller {
         }
 
         if(greenCards.isEmpty() && yellowCards.isEmpty() && redCards.isEmpty()) {
-            //endGame();
+            endGame();
         } else {
             setQuestion();
         }
@@ -185,7 +195,7 @@ public class Controller {
         }
 
         if(greenCards.isEmpty() && yellowCards.isEmpty() && redCards.isEmpty()) {
-            //endGame();
+            endGame();
         } else {
             setQuestion();
         }
@@ -202,8 +212,8 @@ public class Controller {
             }
 
             if(!probability.contains(2)) {
-                probability.add((Integer) 2);
-                probability.add((Integer) 2);
+                probability.add(2);
+                probability.add(2);
             }
         }
 
@@ -226,10 +236,14 @@ public class Controller {
         //if card came from red and chose red keep red
 
         if(greenCards.isEmpty() && yellowCards.isEmpty() && redCards.isEmpty()) {
-            //endGame();
+            endGame();
         } else {
             setQuestion();
         }
+    }
+
+    public void endGame() {
+        initialize();
     }
 
     public void makeNewSet() {
@@ -260,8 +274,7 @@ public class Controller {
             Deck.writeFileSet(file, newCardSet);
             Deck.appendDeckName(allDecks, setName);
 
-            newSetPane.setVisible(false);
-            menuPane.setVisible(true);
+            initialize();
         }
     }
 }
