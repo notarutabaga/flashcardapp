@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class Controller {
     public Pane menuPane;
-    public JFXButton startButton;
 
     public Pane questionPane;
     public TextArea cardQuestion;
@@ -30,8 +29,8 @@ public class Controller {
     public ArrayList<Card> greenCards;
     public ArrayList<Integer> probability;
     public Card currentCard;
-    public JFXButton newSetButton;
-    public Pane newSetPane;
+    public JFXButton newDeckButton;
+    public Pane newDeckPane;
     public TextField fillName;
     public JFXButton saveCardButton;
     public JFXButton saveSetButton;
@@ -39,7 +38,7 @@ public class Controller {
     public TextArea fillAnswer;
 
     public Text numCards;
-    
+
     public ArrayList<String> allDecks;
     public Pane choicePane;
     public JFXButton homeButton;
@@ -56,7 +55,7 @@ public class Controller {
         menuPane.setVisible(true);
         questionPane.setVisible(false);
         answerPane.setVisible(false);
-        newSetPane.setVisible(false);
+        newDeckPane.setVisible(false);
         choicePane.setVisible(false);
         allDecks = Deck.readInDecks();
         System.out.println(allDecks);
@@ -259,7 +258,7 @@ public class Controller {
     }
 
     public void makeNewSet() {
-        newSetPane.setVisible(true);
+        newDeckPane.setVisible(true);
         menuPane.setVisible(false);
     }
 

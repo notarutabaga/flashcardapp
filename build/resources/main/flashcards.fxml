@@ -50,31 +50,7 @@
             </JFXButton>
          </children>
       </Pane>
-      <Pane fx:id="menuPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;">
-         <children>
-            <Text layoutX="163.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FLASH">
-               <font>
-                  <Font name="Century Schoolbook Bold Italic" size="48.0" />
-               </font>
-            </Text>
-            <Text layoutX="341.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cards">
-               <font>
-                  <Font name="Century Schoolbook Italic" size="36.0" />
-               </font>
-            </Text>
-            <JFXButton fx:id="newSetButton" focusTraversable="false" layoutX="197.0" layoutY="227.0" onAction="#makeNewSet" style="-fx-border-color: #ffafcc; -fx-border-width: 3; -fx-border-radius: 10;" text="Create new set">
-               <font>
-                  <Font name="Century Schoolbook" size="24.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="viewChoicePaneB" focusTraversable="false" layoutX="198.0" layoutY="166.0" onAction="#viewChoicePane" prefHeight="53.0" prefWidth="204.0" style="-fx-border-color: #ffafcc; -fx-border-width: 3; -fx-border-radius: 10;" text="Practice a set">
-               <font>
-                  <Font name="Century Schoolbook" size="24.0" />
-               </font>
-            </JFXButton>
-         </children>
-      </Pane>
-      <Pane fx:id="newSetPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" visible="false">
+      <Pane fx:id="newDeckPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" visible="false">
          <children>
             <TextField fx:id="fillName" focusTraversable="false" layoutX="120.0" layoutY="31.0" prefHeight="27.0" prefWidth="315.0" promptText="Set Name">
                <font>
@@ -137,5 +113,29 @@
                </opaqueInsets>
             </JFXButton>
          </children></Pane>
+      <Pane fx:id="menuPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" visible="false">
+         <children>
+            <Text layoutX="163.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FLASH">
+               <font>
+                  <Font name="Century Schoolbook Bold Italic" size="48.0" />
+               </font>
+            </Text>
+            <Text layoutX="341.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="cards">
+               <font>
+                  <Font name="Century Schoolbook Italic" size="36.0" />
+               </font>
+            </Text>
+            <JFXButton fx:id="newDeckButton" focusTraversable="false" layoutX="197.0" layoutY="227.0" onAction="#makeNewSet" style="-fx-border-color: #ffafcc; -fx-border-width: 3; -fx-border-radius: 10;" text="Create new set">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="viewChoicePaneB" focusTraversable="false" layoutX="198.0" layoutY="166.0" onAction="#viewChoicePane" prefHeight="53.0" prefWidth="204.0" style="-fx-border-color: #ffafcc; -fx-border-width: 3; -fx-border-radius: 10;" text="Practice a set">
+               <font>
+                  <Font name="Century Schoolbook" size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
