@@ -1,5 +1,7 @@
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXListView;
 import javafx.fxml.FXML;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
@@ -37,9 +39,13 @@ public class Controller {
     public TextArea fillAnswer;
 
     public Text numCards;
-
-    public Deck currentSet;
+    
     public ArrayList<String> allDecks;
+    public Pane choicePane;
+    public JFXButton homeButton;
+    public JFXListView<String> deckListView = new JFXListView<>();
+    public JFXButton startButton2;
+    public JFXButton viewChoicePaneB;
 
     ArrayList<Card> newSet = new ArrayList<>();
     Deck newCardSet;
@@ -51,24 +57,29 @@ public class Controller {
         questionPane.setVisible(false);
         answerPane.setVisible(false);
         newSetPane.setVisible(false);
+        choicePane.setVisible(false);
         allDecks = Deck.readInDecks();
         System.out.println(allDecks);
     }
 
-    public Deck chooseDeck() {
-        String name = "firstSet";
+    public void chooseDeck() {
+        deckListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+
+        String name = deckListView.getSelectionModel().getSelectedItem();
+        System.out.println(name);
         ArrayList<Card> cards = Deck.readFileDeck(new File("src\\main\\resources\\savedDecks\\" + name + ".txt"));
+        System.out.println(cards);
 
-        Deck deck = new Deck(cards, name);
-
-        return deck;
+        Deck currentDeck = new Deck(cards, name);
+        startGame(currentDeck);
     }
 
-    public void startGame() {
+    public void startGame(Deck currentDeck) {
         menuPane.setVisible(false);
         questionPane.setVisible(true);
-        currentSet = chooseDeck();
-        redCards = currentSet.getDeck();
+        choicePane.setVisible(false);
+        answerPane.setVisible(false);
+        redCards = currentDeck.getDeck();
         probability = Deck.getProbability();
         yellowCards = new ArrayList<>();
         greenCards = new ArrayList<>();
@@ -243,6 +254,7 @@ public class Controller {
     }
 
     public void endGame() {
+        //add stats like how many times played
         initialize();
     }
 
@@ -275,6 +287,16 @@ public class Controller {
             Deck.appendDeckName(allDecks, setName);
 
             initialize();
+        }
+    }
+
+    public void viewChoicePane() {
+        menuPane.setVisible(false);
+        choicePane.setVisible(true);
+
+        int length = allDecks.size();
+        for(int i = 0; i < length; i++) {
+            deckListView.getItems().add(allDecks.get(i));
         }
     }
 }
