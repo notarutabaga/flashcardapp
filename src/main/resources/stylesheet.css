@@ -1,3 +1,12 @@
 .text-area *.text {
     -fx-text-alignment: center;
 }
+
+@font-face {
+    font-family: 'Century Schoolbook';
+    src: url('Century Schoolbook Std Regular.otf');
+}
+
+.text {
+    -fx-font-family: "Century Schoolbook";
+}

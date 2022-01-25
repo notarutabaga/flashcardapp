@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class Controller {
     public Pane menuPane;
+    public JFXButton newDeckButton;
 
     public Pane questionPane;
     public TextArea cardQuestion;
@@ -29,14 +30,13 @@ public class Controller {
     public ArrayList<Card> greenCards;
     public ArrayList<Integer> probability;
     public Card currentCard;
-    public JFXButton newDeckButton;
+
     public Pane newDeckPane;
     public TextField fillName;
     public JFXButton saveCardButton;
     public JFXButton saveSetButton;
     public TextArea fillQuestion;
     public TextArea fillAnswer;
-
     public Text numCards;
 
     public ArrayList<String> allDecks;
