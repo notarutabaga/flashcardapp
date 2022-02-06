@@ -1,0 +1,21 @@
+@font-face {
+    font-family: "Century Schoolbook";
+    src: url("../fonts/CenturySchoolbookStdRegular.otf");
+}
+
+.label {
+    -fx-font-family: "Century Schoolbook";
+}
+
+.text-field {
+    -fx-font-family: "Century Schoolbook";
+}
+
+.text-area *.text {
+    -fx-font-family: "Century Schoolbook";
+}
+
+.list-cell {
+    -fx-font-family: "Century Schoolbook";
+    -fx-font-size: 16;
+}

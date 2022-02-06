@@ -28,7 +28,7 @@ public class Card {
 
     @Override
     public String toString() {
-        return ("question: " + getQuestion() + " ... answer: " + getAnswer());
+        return ("q: " + getQuestion() + " ... a: " + getAnswer());
     }
 
 }

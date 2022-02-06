@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Century Schoolbook";
+    src: url("../fonts/CenturySchoolbookStdRegular.otf");
+}
+
+.button *.text {
+    -fx-font-family: "Century Schoolbook";
+    -fx-font-size: 16;
+}

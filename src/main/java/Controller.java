@@ -1,6 +1,6 @@
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXListView;
-import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class Controller {
     public Pane menuPane;
     public JFXButton newDeckButton;
+    public JFXButton viewChoicePaneB;
 
     public Pane questionPane;
     public TextArea cardQuestion;
@@ -37,18 +38,17 @@ public class Controller {
     public JFXButton saveSetButton;
     public TextArea fillQuestion;
     public TextArea fillAnswer;
-    public Text numCards;
+    public Label numCards;
 
     public ArrayList<String> allDecks;
     public Pane choicePane;
     public JFXButton homeButton;
     public JFXListView<String> deckListView = new JFXListView<>();
-    public JFXButton startButton2;
-    public JFXButton viewChoicePaneB;
+    public JFXButton startButton;
 
-    ArrayList<Card> newSet = new ArrayList<>();
+
+    ArrayList<Card> newDeck = new ArrayList<>();
     Deck newCardSet;
-    @FXML
     int numCardsCount;
 
     public void initialize() {
@@ -57,6 +57,7 @@ public class Controller {
         answerPane.setVisible(false);
         newDeckPane.setVisible(false);
         choicePane.setVisible(false);
+        deckListView.getItems().clear();
         allDecks = Deck.readInDecks();
         System.out.println(allDecks);
     }
@@ -266,7 +267,7 @@ public class Controller {
         if(!fillQuestion.getText().isEmpty() && !fillAnswer.getText().isEmpty()) {
             String question = fillQuestion.getText();
             String answer = fillAnswer.getText();
-            newSet.add(new Card(question, answer));
+            newDeck.add(new Card(question, answer));
             fillQuestion.clear();
             fillAnswer.clear();
             numCardsCount++;
@@ -275,9 +276,9 @@ public class Controller {
     }
 
     public void saveSet() {
-        if(!newSet.isEmpty() && !fillName.getText().isEmpty()) {
+        if(!newDeck.isEmpty() && !fillName.getText().isEmpty()) {
             String setName = fillName.getText();
-            newCardSet = new Deck(newSet, setName);
+            newCardSet = new Deck(newDeck, setName);
             System.out.println(newCardSet.getName());
             System.out.println(newCardSet.getDeck());
 
